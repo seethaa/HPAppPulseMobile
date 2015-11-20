@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AppPulseMobExample</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_httpget_show_response">HTTPGetShowResponse</string>
+    <string name="title_activity_filter_images">FilterImages</string>
+</resources>

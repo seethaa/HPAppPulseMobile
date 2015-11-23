@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 public class GridViewAdapter extends BaseAdapter {
 
-    // Declare variables
     private Activity activity;
     private String[] filepath;
     private String[] filename;
@@ -49,18 +48,15 @@ public class GridViewAdapter extends BaseAdapter {
         View vi = convertView;
         if (convertView == null)
             vi = inflater.inflate(R.layout.gridview_item, null);
-        // Locate the TextView in gridview_item.xml
         TextView text = (TextView) vi.findViewById(R.id.text);
-        // Locate the ImageView in gridview_item.xml
         ImageView image = (ImageView) vi.findViewById(R.id.image);
 
-        // Set file name to the TextView followed by the position
+        // Set file name
         text.setText(filename[position]);
 
-        // Decode the filepath with BitmapFactory followed by the position
         Bitmap bmp = BitmapFactory.decodeFile(filepath[position]);
 
-        // Set the decoded bitmap into ImageView
+        //set decoded bitmap to imgView
         image.setImageBitmap(bmp);
         return vi;
     }

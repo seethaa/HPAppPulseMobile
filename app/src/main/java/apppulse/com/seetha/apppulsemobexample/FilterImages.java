@@ -37,10 +37,6 @@ public class FilterImages extends Activity {
 
         setContentView(R.layout.activity_filter_images);
 
-        /**
-         * Get all the pics in to the /Flash/raw folder and push the good photos
-         * on to /Flash/final folder
-         */
         new CheckBlurTask().execute();
 
         // Call this function to delete all the files from raw folder
@@ -74,10 +70,7 @@ public class FilterImages extends Activity {
                         System.out.println("----------" + dir + files);
                         boolean blurred = isBlurred(dir + files);
                         if (blurred == false) {
-							/*
-							 * Add the file to the final folder and delete from
-							 * raw folder
-							 */
+
                             moveToFinal(files, dir, dir1);
                         } else {
                             fileNames.add(dir + files);

@@ -33,13 +33,11 @@ public class ViewPictures extends Activity {
             Toast.makeText(this, "Error! No SDCARD Found.", Toast.LENGTH_LONG)
                     .show();
         } else {
-            // Locate the image folder in your SD Card
-
-
+            // get image folder
             file = new File(Environment.getExternalStorageDirectory()
                     + File.separator + "AppPulseTutorial/good");
             System.out.println("file path: "+file.toString());
-            // Create a new folder if no folder named SDImageTutorial exist
+
             file.mkdirs();
         }
 
@@ -63,38 +61,24 @@ public class ViewPictures extends Activity {
 
                 System.out.println("check path: " +FilePathStrings[i]);
 
-//                if (!isBlurred(FilePathStrings[i])){
-//                    newFilePathStrings.add(listFile[i].getAbsolutePath());
-//                    newFileNameStrings.add(listFile[i].getName());
-//
-//                    System.out.println(listFile[i].getName() +"not blurred");
-//
-//                }
             }
         }
-
-        // Locate the GridView in gridview_main.xml
         grid = (GridView) findViewById(R.id.gridview);
-        // Pass String arrays to LazyAdapter Class
-
 
         adapter = new GridViewAdapter(this, FilePathStrings, FileNameStrings);
-        // Set the LazyAdapter to the GridView
+        // set LazyAdapter to the GridView
         grid.setAdapter(adapter);
 
-        // Capture gridview item click
         grid.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
+                //extras for file information
                 Intent i = new Intent(ViewPictures.this, ViewImage.class);
-                // Pass String arrays FilePathStrings
                 i.putExtra("filepath", FilePathStrings);
-                // Pass String arrays FileNameStrings
                 i.putExtra("filename", FileNameStrings);
-                // Pass click position
                 i.putExtra("position", position);
                 startActivity(i);
             }
